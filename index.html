@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email input</title>
+    <style> 
+        body { 
+            font-family: Comic Sans MS;
+            background-color: rgb(176,101,0);
+            line-height: 1.7;
+        }
+        h1 {
+            color: rgb(135,206,250);
+        }
+        p {
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, this is not a scam website.</h1>
+    <p>Promise! I definitely won't send you anything. </p>
+    <p>(´・＿・`)</p>
+    <form action="http://www.example.org/subscribe.php" id="emailForm"> 
+        <p>Please enter your email address:</p>
+        <input type="email" name="email" required />
+        <input type="submit" value="Submit" />
+    </form>
+
+    <div id="thankYouMessage" style="display: none;">
+        <h2>Thank You! By entering your email address, I now know it. ¯\_(ツ)_/¯ Just kidding!</h2>
+    </div>
+
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            // Hide form, header, and paragraph
+            document.getElementById('emailForm').style.display = 'none';
+            document.querySelector('h1').style.display = 'none';
+            document.querySelectorAll('p').forEach(function(p) {
+                p.style.display = 'none';
+            });
+
+            // Display thank you message
+            document.getElementById('thankYouMessage').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
